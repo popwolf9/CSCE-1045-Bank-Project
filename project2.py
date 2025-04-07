@@ -113,7 +113,13 @@ class Bank:
         if not self.login_user.check_pw(pw):
             print("Invalid password. Please try again...")
             return
-        pw_new = input("Enter your new password: ")
+        count_pw_new = 0 
+        while count_pw_new == 0:
+            pw_new = input("Enter your new password: ")
+            if pw_new == "":
+                print("Error: New password cannot be blank.")
+            else:
+                count_pw_new += 5
         self.login_user.new_pw(pw_new)
         print("You have changed your password. Please make a note of it somewhere secure.")
 
